@@ -1,0 +1,20 @@
+# Following files and directories would not be added to the project repository
+
+# actually this project does not require virtual environment setup
+# but some ideas may require Python to render reStructuredText files
+/.venv/
+/.env/
+/venv/
+/env/
+
+# ide configs
+/.vscode/
+/.idea/
+
+# emacs cache and backup files
+\#*\#
+*~
+
+# temporary files storage
+/temp/
+/tmp/
