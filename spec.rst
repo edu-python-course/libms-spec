@@ -17,8 +17,9 @@ accessible, making the library management process seamless and efficient. This
 project aims to merge traditional library functions with modern technological
 innovations, promoting efficiency and an enhanced user experience.
 
+**********
 User roles
-==========
+**********
 
 .. note::
     It is essential for developers to consider security aspects when
@@ -26,7 +27,7 @@ User roles
     outside their designated role's scope.
 
 Admins
-------
+======
 
 Superusers have full control over the entire system. They can access and manage
 all functionalities provided by the Django admin site.
@@ -38,7 +39,7 @@ Admins can create, modify, or delete any record within the application.
 *   Access Django admin site
 
 Librarians
-----------
+==========
 
 Staff personnel are in charge of day-to-day operations within the library.
 They can add new books to the library's collection, manage existing books'
@@ -57,7 +58,7 @@ details, and accept or decline borrow requests from regular users.
 *   Register returned books and update their status
 
 Regular
--------
+=======
 
 Regular registered users are the members of the library. They can search books,
 request to borrow them, and are responsible for returning borrowed books on
@@ -73,7 +74,7 @@ time.
 *   Return borrowed books
 
 Anonymous
----------
+=========
 
 Anonymous users are visitors who haven't logged into the system.
 
