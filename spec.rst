@@ -201,3 +201,41 @@ Attributes
     The date the book was returned and the borrowing request was completed.
     Optional, should only be set if the request has reached the "Complete"
     status.
+
+Relationships
+=============
+
+Book to author
+--------------
+
+Each ``Author`` can be associated with multiple ``Books``, and each ``Book``
+can have **one or more** ``authors``. This establishes a **many-to-many**
+relationship between the two entities.
+
+Book to genre
+-------------
+
+Each ``Genre`` can be associated with multiple ``Books``, and vice-versa.
+However a ``Book`` might not belong to any genre. This relationship between
+``Genre`` and ``Book`` is still considered **many-to-many**, but with the
+possibility of zero genres for a book.
+
+Book to borrow request
+----------------------
+
+Each ``Book`` can be associated with multiple ``BorrowRequests``, but each
+``BorrowRequest`` refers only one ``book``, forming a **many-to-one**
+relationship.
+
+User to borrow request
+----------------------
+
+Each ``User`` can make multiple ``BorrowRequests``, but each ``BorrowRequest``
+refers to only one book, forming a **many-to-one** relationship.
+
+User to book (as a borrower)
+----------------------------
+
+A ``Book`` may have been borrowed by a ``User``, but at any given time, each
+``Book`` can be borrowed by one user only. This forms a **one-to-one**
+relationship.
