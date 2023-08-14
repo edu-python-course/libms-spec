@@ -205,6 +205,11 @@ Attributes
 Relationships
 =============
 
+.. mermaid:: ./mermaid/models.mmd
+    :align: center
+    :caption: Entity relationship diagram
+    :alt: entity relationship diagram
+
 Book to author
 --------------
 

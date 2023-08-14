@@ -1,0 +1,31 @@
+erDiagram
+    USER ||--o{ BORROWREQUEST: "Makes"
+    BOOK ||--o{ BORROWREQUEST: "Is Requested"
+    BOOK }o--|{ GENRE: "May Belong to"
+    BOOK ||--|{ AUTHOR: "Written by"
+    USER |o--|| BOOK: "Borrows (At a given time)"
+
+    BORROWREQUEST {
+        integer status
+        date requested
+        date approved
+        date due_date
+        date completed
+    }
+
+    BOOK {
+        string title
+        string isbn
+        text summary
+        int status
+        string publisher
+    }
+
+    GENRE {
+        string name
+    }
+
+    AUTHOR {
+        string name
+        text bio
+    }
