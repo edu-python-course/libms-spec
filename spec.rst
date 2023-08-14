@@ -84,3 +84,120 @@ Anonymous users are visitors who haven't logged into the system.
 *   View details of a book
 *   Search books
 *   Access to the registration or login pages
+
+******
+Models
+******
+
+Author model
+============
+
+The ``Author`` model captures the details of the person, or group responsible
+for creating the book.
+
+Attributes
+----------
+
+:Name:
+    The full name of the author. This should be limited to 255 characters.
+
+:Bio:
+    A brief biography or description of the author.
+
+Genre model
+===========
+
+The ``Genre`` model represents the category or type of content a book belongs
+to, such as "Fiction", "Non-fiction", "Science", "Romance" etc. Since a book
+can belong to more than one category at a time, it is implemented as
+a dedicated model.
+
+Attributes
+----------
+
+:Name: The name of the genre.
+
+Book model
+==========
+
+The ``Book`` model represents a physical book in the library's collection. Each
+book record captures essential bibliographic information, as well as details
+related to its current status in the library (e.g. available, borrowed etc.).
+
+Attributes
+----------
+
+:Title:
+    The name or title of the book (255 characters or fewer).
+
+:Summary:
+    A brief description or synopsis of the book.
+
+:ISBN:
+    International Standard Book Number, a unique identifier for books.
+
+:Status:
+    Current status of the book.
+
+    * Available
+    * Awaiting approval
+    * Borrowed
+    * Approve returned
+
+:Published date:
+    The date when the book was published.
+
+:Publisher:
+    The entity or company responsible for the production and distribution
+    of the book.
+
+:Genre(s):
+    The category or type of content the book falls under (e.g., Fiction,
+    Non-Fiction, Science).
+
+:Author(s):
+
+    The name of the person or group responsible for creating the content of
+    the book.
+
+:Borrower:
+    The user who has currently borrowed the book, if applicable.
+
+Borrow request model
+====================
+
+The ``BorrowRequest`` model captures the intent of a user to borrow a specific
+book. It tracks the status of the request, whether it's pending, approved,
+declined, or completed.
+
+Attributes
+----------
+
+:Book:
+    A reference to a book to be borrowed.
+
+:Borrower:
+    A reference to a user who wants to borrow a book.
+
+:Status:
+    The current status of the request.
+
+    * pending
+    * approved
+    * declined
+    * complete
+
+:Request date:
+    The date the borrow request was made. This is required.
+
+:Approval date:
+    The date the request was approved, if applicable. Optional.
+
+:Due date:
+    The date by which the book should be returned.
+    Optional, should only be set if the request if approved.
+
+:Complete date:
+    The date the book was returned and the borrowing request was completed.
+    Optional, should only be set if the request has reached the "Complete"
+    status.
