@@ -244,3 +244,94 @@ User to book (as a borrower)
 A ``Book`` may have been borrowed by a ``User``, but at any given time, each
 ``Book`` can be borrowed by one user only. This forms a **one-to-one**
 relationship.
+
+*******************
+Views and templates
+*******************
+
+Admin site
+==========
+
+Only admins are permitted to use admin site.
+Librarians should use their dedicated views to perform operations.
+
+Authentication
+==============
+
+Login
+-----
+
+.. rubric:: Template
+
+A form with fields for entering a username and a password, and a submit button.
+
+.. rubric:: View logic
+
+Validate entered credentials and authenticate the user. In case of incorrect
+credentials, display an error message.
+
+Registration
+------------
+
+.. rubric:: Template
+
+A form for user registration. **Required** fields are:
+
+-   username
+-   first name
+-   last name
+-   password
+-   confirm password
+
+.. rubric:: View logic
+
+Upon submission, the view should validate the provided data:
+
+-   Check if username is already taken.
+-   Ensure that password and confirm password fields match.
+-   Save the user's data if all validations pass.
+    Otherwise, display appropriate error messages.
+
+When saving passwords in the database, always store them in a hashed format,
+never in plain text. Django's built-in ``User`` model and authentication
+system handle password hashing by default, which is a big plus.
+
+Library collection
+==================
+
+These views are available for all (including anonymous) users.
+
+Books list
+----------
+
+.. todo: complete the section
+
+Detail view
+-----------
+
+.. todo: complete the section
+
+Books management
+================
+
+These views are available only for staff (librarians and admins).
+
+Add and modify authors
+----------------------
+
+.. todo: complete the section
+
+Add and modify genres
+---------------------
+
+.. todo: complete the section
+
+Add, modify and delete books
+----------------------------
+
+.. todo: complete the section
+
+Borrow requests
+---------------
+
+.. todo: complete the section
