@@ -266,9 +266,10 @@ Views and templates
 Admin site
 ==========
 
-Only admins are permitted to use admin site.
-Librarians should use their dedicated views to perform operations.
 Admin site provides the full control over the entire system.
+Only admins are permitted to use admin site.
+Librarians should use their dedicated views to perform operations,
+except special cases.
 
 Authentication
 ==============
@@ -371,13 +372,13 @@ Detail view
 The detailed view of a specific book, presenting comprehensive information:
 
 -   **Title**: Display the book's title prominently.
+-   **Genre(s)**: List all associated genres (if any).
 -   **Author(s)**: List all associated authors.
--   **Summary**: A full summary or description of the book.
 -   **ISBN**: The International Standard Book Number.
 -   **Published Date**: When the book was published.
 -   **Publisher**: The name of the entity or company responsible for publishing
+-   **Summary**: A full summary or description of the book.
     the book.
--   **Genre(s)**: List all associated genres.
 -   **Action Buttons** (For authenticated users only):
     -   **Borrow Request Button**: If the user has no associated borrow request
         they can create a new one.
@@ -428,10 +429,16 @@ Books management
 
 These views are available only for staff (librarians and admins).
 
+Authors and genres management
+-----------------------------
+
+Only librarians and admins can add, modify or delete authors and genres.
+No additional views for CRUD operations required (except admin site).
+Librarians are allowed to access authors and genres via admin site.
+
 Book creation
 -------------
 
-.. todo:
 
 Borrow requests
 ---------------
