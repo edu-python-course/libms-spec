@@ -178,10 +178,25 @@ Attributes
 :Status:
     The current status of the request.
 
-    * pending
-    * approved
-    * declined
-    * complete
+    -   pending
+    -   approved
+    -   collected
+    -   complete
+    -   declined
+
+    The status constants should be encapsulated within the ``BorrowRequest``
+    model.
+
+    .. code-block:: python
+
+        class BorrowRequestModel(models.Model):
+            ...
+            PENDING = 1
+            APPROVED = 2
+            COLLECTED = 3
+            COMPLETE = 4
+            DECLINED = 5
+            ...
 
 :Overdue:
     A flag indicating if a borrow request was overdue.
@@ -335,12 +350,62 @@ A list (or table) of books. Each book entry should provide information:
 Detail view
 -----------
 
-.. todo:
-    available for all
-    functions:
-        authenticated users can make borrow request
-        authenticated users can gather the book, if borrow request is approved
-        and the book is available
+.. rubric:: Template
+
+The detailed view of a specific book, presenting comprehensive information:
+
+-   **Title**: Display the book's title prominently.
+-   **Author(s)**: List all associated authors.
+-   **Summary**: A full summary or description of the book.
+-   **ISBN**: The International Standard Book Number.
+-   **Published Date**: When the book was published.
+-   **Publisher**: The name of the entity or company responsible for publishing
+    the book.
+-   **Genre(s)**: List all associated genres.
+-   **Action Buttons** (For authenticated users only):
+    -   **Borrow Request Button**: If the user has no associated borrow request
+        they can create a new one.
+    -   **Gather Book Button**: If the user's borrow request for this book has
+        been approved, allow the user to confirm they've picked up the book.
+
+.. rubric:: View logic
+
+#.  **Fetching Book Details**:
+
+    -   Use the book's identifier (usually a primary key) to fetch its details
+        from the database.
+
+#.  **Checking User Authentication**:
+
+    -   Determine if a user is authenticated. If they are, display the
+        appropriate action buttons based on the book's availability status
+        and any existing borrow requests by the user.
+
+#.  **Handling Borrow Requests**:
+
+    -   If an authenticated user clicks on the "Borrow Request" button:
+
+        #.  Create a new borrow request in the ``BorrowRequest`` model with
+            status "pending".
+        #.  Update the book's status to "Awaiting approval".
+        #.  Redirect the user to a confirmation page or display a message
+            indicating the request has been made.
+
+#.  **Handling Book Gathering**:
+
+    -   If an authenticated user has an approved borrow request and clicks
+        the "Gather Book" button:
+
+        #.  Update the book's status to "Borrowed".
+        #.  Update the borrow request's status to "complete".
+        #.  Redirect the user to a confirmation page or display a message
+            indicating they've picked up the book.
+
+.. note::
+    Always ensure the user's actions are authenticated and authorized.
+    This prevents unauthorized borrow requests or gathering of books.
+    Also, consider adding error handling to manage cases where the book's
+    details cannot be fetched or any other unexpected issues.
 
 Books management
 ================
