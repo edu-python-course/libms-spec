@@ -504,21 +504,50 @@ A confirm delete form with **Submit** and **Cancel** buttons.
 Borrow requests
 ===============
 
-This view provides a list of un-completed and not declined borrow requests
-present in the system. This view is available only for librarians and admins.
+This view facilitates the management of borrowing requests for librarians
+and admins, aiding in their prompt handling.
 
 .. rubric:: Template
 
-A list of borrow requests (list or table).
+Present a table showcasing the list of borrow requests. Each row embodies a
+borrow request and encompasses:
 
--   "Due date" input should be present for newly created requests.
--   "Approve" and "Decline" buttons should be present for newly created
-    requests.
--   "Complete" button should be present for *approved** requests.
+-   **Book Title**: Title of the requested book.
+-   **User**: Identifier of the user who initiated the request.
+-   **Request Date**: Date of the request's inception.
+-   **Due Date**:
+    -   Input field for librarians to set upon approval for new requests.
+    -   For approved ones, display the librarian-set date.
+-   **Status**: Present state of the request (New, Approved, Completed,
+    Declined).
+-   **Approve Button**: Visible for new requests. Toggles status to "Approved"
+    and freezes the due date.
+-   **Decline Button**: Appears for new requests. Sets status to "Declined"
+    and can prompt for a decline reason.
+-   **Complete Button**: Displayed for approved requests. Marks the request
+    as completed.
 
-.. rubric:: View logic
+.. rubric:: View Logic
 
-.. todo:
-    approve borrow request
-    decline borrow request
-    complete borrow request
+#.  **Approve Borrow Request**:
+    -   Validate book availability.
+    -   Modify book status to "Borrowed".
+    -   Switch borrow request to "Approved".
+    -   Define the return due date as per librarian.
+    -   Inform the user about the approval and due date.
+
+#.  **Decline Borrow Request**:
+    -   Change borrow request status to "Declined".
+    -   Optionally, procure decline reason from librarian.
+    -   Notify user regarding the declination.
+
+#.  **Complete Borrow Request**:
+    -   Ensure book's return.
+    -   Update book status to "Available".
+    -   Toggle borrow request status to "Completed".
+    -   If needed, record any notes or damages during return.
+
+.. note::
+    Implementing reminders for near-due borrow requests can function as an
+    alert system for both the librarian and the user.
+
