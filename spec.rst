@@ -380,6 +380,7 @@ The detailed view of a specific book, presenting comprehensive information:
 -   **Summary**: A full summary or description of the book.
     the book.
 -   **Action Buttons** (For authenticated users only):
+
     -   **Borrow Request Button**: If the user has no associated borrow request
         they can create a new one.
     -   **Gather Book Button**: If the user's borrow request for this book has
