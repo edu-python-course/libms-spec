@@ -502,14 +502,23 @@ A confirm delete form with **Submit** and **Cancel** buttons.
 -   If deletion is canceled view should redirect back to book detail view page.
 
 Borrow requests
----------------
+===============
+
+This view provides a list of un-completed and not declined borrow requests
+present in the system. This view is available only for librarians and admins.
+
+.. rubric:: Template
+
+A list of borrow requests (list or table).
+
+-   "Due date" input should be present for newly created requests.
+-   "Approve" and "Decline" buttons should be present for newly created
+    requests.
+-   "Complete" button should be present for *approved** requests.
+
+.. rubric:: View logic
 
 .. todo:
-    a list of borrow request with information about current status, borrower
-    and the book
-    functions:
-        for new requests each entry has a button to approve or decline request
-        approved requests should have due date set
-        for approved requests complete button is available
-        if complete status is set after the due date - overdue flag should be
-        set.
+    approve borrow request
+    decline borrow request
+    complete borrow request
