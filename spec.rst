@@ -435,10 +435,71 @@ Authors and genres management
 Only librarians and admins can add, modify or delete authors and genres.
 No additional views for CRUD operations required (except admin site).
 Librarians are allowed to access authors and genres via admin site.
+Only admins can remove authors or genres.
 
-Book creation
+Book creation and update
+------------------------
+
+The template should comprise a form with fields corresponding to the book's
+attributes. Here are the essential elements for the form:
+
+:Title:
+    A text input field.
+
+:Summary:
+    A textarea for a brief description or synopsis.
+
+:ISBN:
+    A text input field for the book's International Standard Book Number.
+
+:Available:
+    A checkbox indicating if a book is available. Defaults to ``True``.
+
+:Published date:
+    A date input field.
+
+:Publisher:
+    A text input field.
+
+:Genres:
+    A multi-select list of genres (e.g. dropdown, checkboxes etc.). This
+    should fetch available genres from the database and allow users to
+    select zero or more genres.
+
+:Authors:
+    A multi-select list of authors (e.g. dropdown, checkboxes etc.). This
+    should fetch available authors from the database and allow users to
+    select one or more authors.
+
+.. rubric:: View logic
+
+-   If it's an *update* action, pre-populate the form fields with the existing
+    details of the book fetched from the database.
+-   For *creation*, provide an empty form for the librarian to fill in.
+-   Ensure the published date is logical (e.g. not a future date).
+-   Validate required inputs, according to general ``Book`` model rules.
+-   If validations pass: save changes to the database; otherwise, provide
+    helpful error messages.
+
+.. note::
+    You MAY provide a mechanism (like modal or a quick entry form) to add
+    a new genre or author without leaving the book form page.
+
+Book deletion
 -------------
 
+Only librarians and administrators are permitted to perform this action.
+
+.. rubric:: Template
+
+A confirm delete form with **Submit** and **Cancel** buttons.
+
+.. rubric:: View logic
+
+-   Authorize user before deleting performing deletion.
+-   If a form is submitted, a book should be removed from the library
+    collection.
+-   If deletion is canceled view should redirect back to book detail view page.
 
 Borrow requests
 ---------------
