@@ -136,13 +136,9 @@ Attributes
 :ISBN:
     International Standard Book Number, a unique identifier for books.
 
-:Status:
-    Current status of the book.
-
-    * Available
-    * Awaiting approval
-    * Borrowed
-    * Approve returned
+:Available:
+    Current available status of the book. Either ``True`` or ``False``.
+    Books are available by default.
 
 :Published date:
     The date when the book was published.
@@ -186,6 +182,9 @@ Attributes
     * approved
     * declined
     * complete
+
+:Overdue:
+    A flag indicating if a borrow request was overdue.
 
 :Request date:
     The date the borrow request was made. This is required.
@@ -303,39 +302,65 @@ never in plain text.
 Library collection
 ==================
 
-These views are available for all (including anonymous) users.
+These views are generally available for all (including anonymous) users.
+The functionality for authenticated users include books borrowing.
 
 Books list
 ----------
 
-.. todo: complete the section
+.. rubric:: Template
+
+A list (or table) of books. Each book entry should provide information:
+
+-   title
+-   author(s)
+-   summary (truncated if too long, 30 words or fewer)
+-   availability status (either **Available** or **Unavailable**)
+
+.. rubric:: View logic
+
+#.  Querying the data
+
+    -   Fetch **all** books from the database
+
+#.  Checking availability status (visual mark)
+
+    -   For each book, determine its availability status.
+        Check ``Book.available`` flag.
+
+    .. note::
+        A user can still create a borrowing request, regardless of the book
+        availability status. This is only the visual mark.
 
 Detail view
 -----------
 
-.. todo: complete the section
+.. todo:
+    available for all
+    functions:
+        authenticated users can make borrow request
+        authenticated users can gather the book, if borrow request is approved
+        and the book is available
 
 Books management
 ================
 
 These views are available only for staff (librarians and admins).
 
-Add and modify authors
-----------------------
+Book creation
+-------------
 
-.. todo: complete the section
-
-Add and modify genres
----------------------
-
-.. todo: complete the section
-
-Add, modify and delete books
-----------------------------
-
-.. todo: complete the section
+.. todo:
 
 Borrow requests
 ---------------
 
-.. todo: complete the section
+.. todo:
+    a list of borrow request with information about current status, borrower
+    and the book
+    functions:
+        for new requests each entry has a button to approve or decline request
+        approved requests should have due date set
+        for approved requests complete button is available
+        if complete status is set after the due date - overdue flag should be
+        set.
