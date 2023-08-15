@@ -314,6 +314,22 @@ never in plain text.
     Django's built-in ``User`` model and authentication
     system handle password hashing by default, which is a big plus.
 
+Borrowing History
+=================
+
+This view is available only for authenticated users.
+
+.. rubric:: Template
+
+Users can see the list of **all** their borrows requests, regardless of
+approve/decline status.
+
+.. rubric:: View logic
+
+-   Authenticated users can see only their own borrow requests.
+-   Librarians and admins can access borrows requests list for any user,
+    registered in the library system.
+
 Library collection
 ==================
 
