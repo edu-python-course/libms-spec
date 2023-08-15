@@ -254,6 +254,7 @@ Admin site
 
 Only admins are permitted to use admin site.
 Librarians should use their dedicated views to perform operations.
+Admin site provides the full control over the entire system.
 
 Authentication
 ==============
@@ -275,7 +276,7 @@ Registration
 
 .. rubric:: Template
 
-A form for user registration. **Required** fields are:
+A form for new user registration. **Required** fields are:
 
 -   username
 -   first name
@@ -293,8 +294,11 @@ Upon submission, the view should validate the provided data:
     Otherwise, display appropriate error messages.
 
 When saving passwords in the database, always store them in a hashed format,
-never in plain text. Django's built-in ``User`` model and authentication
-system handle password hashing by default, which is a big plus.
+never in plain text.
+
+.. hint::
+    Django's built-in ``User`` model and authentication
+    system handle password hashing by default, which is a big plus.
 
 Library collection
 ==================
