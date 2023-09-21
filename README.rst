@@ -1,6 +1,6 @@
-#########################
-Library Management System
-#########################
+###############################################################################
+                           Library Management System
+###############################################################################
 
 This repository contains the specification for the Library Management System
 project, intended for educational purposes.
