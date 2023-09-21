@@ -1,5 +1,5 @@
 ###############################################################################
-                   Library Management System - Specification
+                           Library Management System
 ###############################################################################
 
 The Library Management System is a Django-based web application that offers a

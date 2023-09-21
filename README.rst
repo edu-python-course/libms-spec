@@ -18,10 +18,10 @@ application architecture, databases, user authentication, and more.
 Repository Structure
 ====================
 
-This repository contains only the project specification and related
-documentation. No actual code implementation is included here.
-Students can refer to this specification to understand the project
-requirements and design before starting the implementation phase.
+This repository contains only the project specification and related documents,
+such as UML diagrams, data fixtures etc. No actual code implementation here.
+Anyone can refer this documentation to understand the project requirements and
+design before starting the implementation phase.
 
 Documents
 =========
