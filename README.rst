@@ -26,6 +26,6 @@ design before starting the implementation phase.
 Documents
 =========
 
-*   `Library Management System - Specification`_
+*   `Library Management System Specification`_
 
-.. _Library Management System - Specification: ./spec.rst
+.. _Library Management System Specification: ./index.rst
